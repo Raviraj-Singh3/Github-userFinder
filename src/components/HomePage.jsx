@@ -9,16 +9,16 @@ export default function HomePage() {
     const gitLink = 'https://api.github.com/users';
 
     async function fetchData(){
-      let config = {
-        method: 'get',
-        maxBodyLength: Infinity,
-        url: gitLink,
-        headers: { 
-          'Authorization': 'Bearer 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'
-        }
-      };
+      // let config = {
+      //   method: 'get',
+      //   maxBodyLength: Infinity,
+      //   url: gitLink,
+      //   headers: { 
+      //     'Authorization': 'Bearer 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'
+      //   }
+      // };
      
-        const response = await axios.request(config);
+        const response = await axios.request(gitLink);
         console.log("response",response);
         const results = response.data;
         const resultData = results.map((result)=>{
@@ -38,9 +38,11 @@ export default function HomePage() {
 
 
   return (
-    <div>
-      {profile.map((p)=> <HomeView key={p.id} name={p.name} avatar_url={p.avatar_url} url={p.url} />)
-      }
+    <div className=" justify-center content-center items-center flex">
+      <div className="grid grid-cols-5 w-5/6  justify-center mt-10">
+        {profile.map((p)=> <HomeView key={p.id} name={p.name} avatar_url={p.avatar_url} url={p.url} />)
+        }
+      </div>
     </div>
   )
 }
