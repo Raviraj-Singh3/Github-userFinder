@@ -1,11 +1,11 @@
-import HomePage from './components/HomePage'
-import Search from './components/Search'
+import CustomRoute from "./components/routes/CustomRoute"
 
 function App() {
+
+
   return (
     <div>
-      <Search />
-      <HomePage />
+      <CustomRoute />
     </div>
   )
 }

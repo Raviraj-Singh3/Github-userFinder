@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import HomeView from "./HomeView";
+import ProfileViw from "./ProfileView";
 // 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
 
-export default function HomePage() {
+export default function ProfileList() {
 
     const [profile, setProfile] = useState([]);
     const gitLink = 'https://api.github.com/users';
@@ -40,7 +40,7 @@ export default function HomePage() {
   return (
     <div className=" justify-center content-center items-center flex">
       <div className="grid grid-cols-5 w-5/6  justify-center mt-10">
-        {profile.map((p)=> <HomeView key={p.id} name={p.name} avatar_url={p.avatar_url} url={p.url} />)
+        {profile.map((p)=> <ProfileViw key={p.id} name={p.name} avatar_url={p.avatar_url} url={p.url} />)
         }
       </div>
     </div>
