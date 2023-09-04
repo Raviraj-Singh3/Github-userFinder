@@ -14,7 +14,8 @@ function ProfileDetails(){
         setImageDetails({
             name: responseData.name,
             url: responseData.avatar_url,
-            id: responseData.login
+            id: responseData.login,
+            profileLink: responseData.html_url
         })
             
         console.log("imagew",imageDetails)
@@ -40,6 +41,9 @@ function ProfileDetails(){
                     
                     
                 </p>
+                <h1>
+                    <a target="_blank" href={imageDetails.profileLink}>Go to Github Profile</a>
+                </h1>
             </div>
             
         </div>
