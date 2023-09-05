@@ -1,14 +1,20 @@
 import { useParams } from "react-router-dom";
 import axios from 'axios'
 import { useEffect, useState } from "react";
-function ProfileDetails(){
+function ProfileDetails({profileName}){
     const [imageDetails, setImageDetails] = useState({})
-    const {id} = useParams()
-    console.log("login id",id)
+    // const {id} = useParams()
+    // console.log("login id",id)
 
     async function downloadPhotos(){
-        const response = await axios.get(`https://api.github.com/users/${id}`);
-        console.log(response.data)
+        
+        const response = await axios.get(`https://api.github.com/users/${profileName}`);
+        console.log("by name", response);
+        // else{
+        //     const response = await axios.get(`https://api.github.com/users/${id}`);
+        //     console.log(response.data)
+        // }
+        
         const responseData = response.data;
 
         setImageDetails({
@@ -26,6 +32,7 @@ function ProfileDetails(){
 
     return(
         <div className="text-center flex items-center justify-center h-screen">
+            {(!imageDetails)? 'Loading': 'loaded'}
             <div className="bg-gray-100 w-auto border-y-zinc-600 rounded-2xl p-6">
 
             <img src={imageDetails.url} alt="photoPreview" 

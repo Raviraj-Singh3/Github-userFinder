@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProfileList from "./ProfileList";
 import Search from "./Search";
+import ProfileDetails from "./ProfileDetails";
 
 
 export default function ProfileDex() {
@@ -10,8 +11,7 @@ export default function ProfileDex() {
     return (
         <div>
             <Search updateSearchTerm={setSearchTerm} />
-            {searchTerm}
-            {(searchTerm.length == 0)? <ProfileList /> : ''}
+            {(searchTerm) &&< ProfileDetails key={searchTerm} profileName={searchTerm}/>}
             
         </div>
     )
