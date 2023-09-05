@@ -11,7 +11,7 @@ export default function ProfileDex() {
     return (
         <div>
             <Search updateSearchTerm={setSearchTerm} />
-            {(searchTerm) &&< ProfileDetails key={searchTerm} profileName={searchTerm}/>}
+            {(!searchTerm)? <ProfileList /> : < ProfileDetails key={searchTerm} profileName={searchTerm}/>}
             
         </div>
     )

@@ -7,32 +7,29 @@ function ProfileDetails({profileName}){
     // console.log("login id",id)
 
     async function downloadPhotos(){
-        
-        const response = await axios.get(`https://api.github.com/users/${profileName}`);
-        console.log("by name", response);
-        // else{
-        //     const response = await axios.get(`https://api.github.com/users/${id}`);
-        //     console.log(response.data)
-        // }
-        
-        const responseData = response.data;
 
-        setImageDetails({
+        try {
+            const response = await axios.get(`https://api.github.com/users/${profileName}`);
+            console.log("by name", response);
+            const responseData = response.data;
+            setImageDetails({
             name: responseData.name,
             url: responseData.avatar_url,
             id: responseData.login,
             profileLink: responseData.html_url
-        })
-            
-        console.log("imagew",imageDetails)
+            })
+        } catch (error) {
+            console.log("something went wrong", error)
+        }
+        
+        
     }
     useEffect(()=>{
         downloadPhotos()
     },[])
 
     return(
-        <div className="text-center flex items-center justify-center h-screen">
-            {(!imageDetails)? 'Loading': 'loaded'}
+        <div className="text-center flex items-center justify-center h-screen -mt-16">
             <div className="bg-gray-100 w-auto border-y-zinc-600 rounded-2xl p-6">
 
             <img src={imageDetails.url} alt="photoPreview" 
