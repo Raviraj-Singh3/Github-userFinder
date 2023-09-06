@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from 'axios'
 import { useEffect, useState } from "react";
+
 function ProfileDetails({profileName}){
     const [imageDetails, setImageDetails] = useState({})
     // const {id} = useParams()
